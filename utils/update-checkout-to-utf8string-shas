@@ -6,6 +6,19 @@ here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 swift_dir="$here/../../utf8-swift/swift"
 test -d "$swift_dir" || { echo "error: swift not found in '$swift_dir'"; exit 1; }
 
+(
+cd "$swift_dir"/..
+for dir in compiler-rt llvm swift-xcode-playground-support \
+    swift-corelibs-foundation clang llbuild cmark lldb swiftpm \
+    swift-corelibs-xctest ninja swift-integration-tests swift \
+    swift-corelibs-libdispatch; do
+    (
+    cd "$dir"
+    git fetch > /dev/null
+    )
+done
+)
+
 swift_sha=$(git ls-remote -h git@github.com:milseman/swift.git refs/heads/utf8string | cut -f1)
 echo "- swift sha: $swift_sha"
 
