@@ -283,3 +283,90 @@ extension String {
   }
 
 }
+
+// Access _distance, _index, etc.
+extension BidirectionalCollection {
+  /// Do not use this method directly; call advanced(by: n) instead.
+  @inlinable
+  @inline(__always)
+  internal func _advanceForward(_ i: Index, by n: Int) -> Index {
+    _precondition(n >= 0,
+                  "Only BidirectionalCollections can be advanced by a negative amount")
+
+    var i = i
+    for _ in stride(from: 0, to: n, by: 1) {
+      formIndex(after: &i)
+    }
+    return i
+  }
+
+  /// Do not use this method directly; call advanced(by: n, limit) instead.
+  @inlinable
+  @inline(__always)
+  internal func _advanceForward(
+    _ i: Index, by n: Int, limitedBy limit: Index
+    ) -> Index? {
+    _precondition(n >= 0,
+                  "Only BidirectionalCollections can be advanced by a negative amount")
+
+    var i = i
+    for _ in stride(from: 0, to: n, by: 1) {
+      if i == limit {
+        return nil
+      }
+      formIndex(after: &i)
+    }
+    return i
+  }
+
+  @inlinable // FIXME(sil-serialize-all)
+  public func _index(_ i: Index, offsetBy n: Int) -> Index {
+    if n >= 0 {
+      return _advanceForward(i, by: n)
+    }
+    var i = i
+    for _ in stride(from: 0, to: n, by: -1) {
+      formIndex(before: &i)
+    }
+    return i
+  }
+
+  @inlinable // FIXME(sil-serialize-all)
+  public func _index(
+    _ i: Index, offsetBy n: Int, limitedBy limit: Index
+    ) -> Index? {
+    if n >= 0 {
+      return _advanceForward(i, by: n, limitedBy: limit)
+    }
+    var i = i
+    for _ in stride(from: 0, to: n, by: -1) {
+      if i == limit {
+        return nil
+      }
+      formIndex(before: &i)
+    }
+    return i
+  }
+
+  @inlinable // FIXME(sil-serialize-all)
+  internal func _distance(from start: Index, to end: Index) -> Int {
+    var start = start
+    var count = 0
+
+    if start < end {
+      while start != end {
+        count += 1
+        formIndex(after: &start)
+      }
+    }
+    else if start > end {
+      while start != end {
+        count -= 1
+        formIndex(before: &start)
+      }
+    }
+
+    return count
+  }
+}
+
