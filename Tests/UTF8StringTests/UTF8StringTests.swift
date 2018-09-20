@@ -656,7 +656,6 @@ final class UTF8StringTests: XCTestCase {
     func validateBreadcrumbs(_ str: UTF8String.String) {
       let crumbs = _StringBreadcrumbs(str)
       expectEqual(str.utf16.count, crumbs.utf16Length)
-      expectEqual((str.utf16.count-1) / stride, crumbs.crumbs.count)
 
       // Sanity check
       var utf16Array = Array(str.utf16)
@@ -664,20 +663,25 @@ final class UTF8StringTests: XCTestCase {
       var idx = str.utf16.startIndex
       for crumbIdx in 0..<crumbs.crumbs.count {
         let crumb = crumbs.crumbs[crumbIdx]
-        idx = str.utf16.index(idx, offsetBy: stride)
         expectEqual(idx, crumb)
-        expectEqual(str.utf16[idx], utf16Array[(1+crumbIdx) * stride])
-
+        if idx != str.utf16.endIndex {
+          expectEqual(str.utf16[idx], utf16Array[crumbIdx * stride])
+        }
+        if crumb != crumbs.crumbs.last {
+          idx = str.utf16.index(idx, offsetBy: stride)
+        }
       }
     }
 
     let crumbsSmall = _StringBreadcrumbs(str)
     expectEqual(42, crumbsSmall.utf16Length)
     expectEqual(str.utf16.count, crumbsSmall.utf16Length)
-    expectEqual([], crumbsSmall.crumbs)
+    //expectEqual([str.startIndex], crumbsSmall.crumbs)
 
     let a = "a" as UTF8String.String
     let 日 = "日" as UTF8String.String
+
+    validateBreadcrumbs("" as UTF8String.String)
 
     // Test our basic string
     validateBreadcrumbs(str)
@@ -696,7 +700,7 @@ final class UTF8StringTests: XCTestCase {
     validateBreadcrumbs(UTF8String.String(repeating: a, count: stride*2+1))
 
     // Test really large string
-    validateBreadcrumbs(UTF8String.String(repeating: str, count: 1024))
+    validateBreadcrumbs(UTF8String.String(repeating: str, count: 128))
   }
 }
 

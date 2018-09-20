@@ -27,6 +27,7 @@
 		188817C020F7F23C0023AA32 /* ICU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188817BF20F7F23C0023AA32 /* ICU.swift */; };
 		188CD3D4211E13BD0039DCD4 /* StringTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CD3D3211E13BD0039DCD4 /* StringTesting.swift */; };
 		188CD3D621470E090039DCD4 /* StringBreadcrumbs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CD3D521470E090039DCD4 /* StringBreadcrumbs.swift */; };
+		188CD3D82152CB8D0039DCD4 /* StringGutsRangeReplaceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188CD3D72152CB8D0039DCD4 /* StringGutsRangeReplaceable.swift */; };
 		18A8967E20EC45CD0097A770 /* OutputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8967920EC45CC0097A770 /* OutputStream.swift */; };
 		18A8967F20EC45CD0097A770 /* SmallString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8967A20EC45CC0097A770 /* SmallString.swift */; };
 		18A8968120EC45CD0097A770 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8967C20EC45CD0097A770 /* Character.swift */; };
@@ -90,6 +91,7 @@
 		188817BF20F7F23C0023AA32 /* ICU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ICU.swift; path = "../../../utf8-swift/swift/stdlib/public/core/ICU.swift"; sourceTree = "<group>"; };
 		188CD3D3211E13BD0039DCD4 /* StringTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringTesting.swift; path = "../../../utf8-swift/swift/stdlib/public/core/StringTesting.swift"; sourceTree = "<group>"; };
 		188CD3D521470E090039DCD4 /* StringBreadcrumbs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringBreadcrumbs.swift; path = "../../../utf8-swift/swift/stdlib/public/core/StringBreadcrumbs.swift"; sourceTree = "<group>"; };
+		188CD3D72152CB8D0039DCD4 /* StringGutsRangeReplaceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringGutsRangeReplaceable.swift; path = "../../../utf8-swift/swift/stdlib/public/core/StringGutsRangeReplaceable.swift"; sourceTree = "<group>"; };
 		18A8967920EC45CC0097A770 /* OutputStream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OutputStream.swift; path = "../../../utf8-swift/swift/stdlib/public/core/OutputStream.swift"; sourceTree = "<group>"; };
 		18A8967A20EC45CC0097A770 /* SmallString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmallString.swift; path = "../../../utf8-swift/swift/stdlib/public/core/SmallString.swift"; sourceTree = "<group>"; };
 		18A8967C20EC45CD0097A770 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Character.swift; path = "../../../utf8-swift/swift/stdlib/public/core/Character.swift"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				18A8968820EC45EA0097A770 /* StringObject.swift */,
 				18A8968920EC45EA0097A770 /* StringProtocol.swift */,
 				18A8969320EC45EB0097A770 /* StringRangeReplaceableCollection.swift */,
+				188CD3D72152CB8D0039DCD4 /* StringGutsRangeReplaceable.swift */,
 				18A8969420EC45EB0097A770 /* StringStorage.swift */,
 				18A8969520EC45EB0097A770 /* StringUnicodeScalarView.swift */,
 				18A8968C20EC45EA0097A770 /* StringUTF8View.swift */,
@@ -324,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				188CD3D82152CB8D0039DCD4 /* StringGutsRangeReplaceable.swift in Sources */,
 				18A896A520EC45EC0097A770 /* String.swift in Sources */,
 				18A896AA20EC45EC0097A770 /* StringLegacy.swift in Sources */,
 				18A8969C20EC45EC0097A770 /* StringNormalization.swift in Sources */,
