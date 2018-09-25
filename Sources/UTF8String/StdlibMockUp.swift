@@ -370,3 +370,9 @@ extension BidirectionalCollection {
   }
 }
 
+/// Tell the optimizer that this code is unreachable if this builtin is
+/// reachable after constant folding build configuration builtins.
+@usableFromInline @_transparent
+internal func _conditionallyUnreachable() -> Never {
+  Builtin.conditionallyUnreachable()
+}
