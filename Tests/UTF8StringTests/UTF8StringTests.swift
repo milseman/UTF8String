@@ -702,6 +702,26 @@ final class UTF8StringTests: XCTestCase {
     // Test really large string
     validateBreadcrumbs(UTF8String.String(repeating: str, count: 128))
   }
+
+  func testStringCompare() {
+    func validateComparison(
+      _ lhs: UTF8String.String, _ rhs: UTF8String.String
+    ) {
+      let swiftLHS = lhs.asSwiftString
+      let swiftRHS = rhs.asSwiftString
+      expectEqual(swiftLHS < swiftRHS, lhs < rhs)
+      expectEqual(swiftLHS == swiftRHS, lhs == rhs)
+      expectEqual(swiftLHS > swiftRHS, lhs > rhs)
+    }
+
+    let allStrings = [str, cafe, cafe2, leadingEmoji, abc, def]
+    for s1 in allStrings {
+      for s2 in allStrings {
+        validateComparison(s1, s2)
+      }
+    }
+  }
+
 }
 
 // The most simple subclass of NSString that CoreFoundation does not know
