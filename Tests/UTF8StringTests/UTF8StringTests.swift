@@ -259,15 +259,18 @@ final class UTF8StringTests: XCTestCase {
       expectPrototypeEquivalence(
         UTF8String.String(decodingCString: ptr, as: UTF32.self), Swift.String(swiftSubStr))
     }
+  }
 
-
-    // TODO: perf opportunity here...
-//    str.dropFirst().withCString { ptr in
-//      // Test for interior pointer
-//      expectEqual(ptr._asUInt8, 1+str._guts._object.nativeUTF8.baseAddress!)
-//    }
-
-    // TODO: others...
+  func testInsert() {
+    var localStr = str
+    var localSwiftStr = swiftStr
+    for _ in 0..<100 {
+      localStr.insert(("朝" as UTF8String.Character), at: localStr.startIndex)
+      localSwiftStr.insert("朝", at: localSwiftStr.startIndex)
+      localStr.insert(("朝" as UTF8String.Character), at: localStr.endIndex)
+      localSwiftStr.insert("朝", at: localSwiftStr.endIndex)
+    }
+    expectPrototypeEquivalence(localStr, localSwiftStr)
   }
 
   func testNSStringInit() {
