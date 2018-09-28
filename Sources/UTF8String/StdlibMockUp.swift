@@ -142,7 +142,7 @@ extension String {
     guard s.hasPointerRepresentation else { fatalError("this hack is for big literals") }
     let bufPtr = UnsafeBufferPointer(
       start: s.utf8Start, count: s.utf8CodeUnitCount)
-    self.init(_StringGuts(bufPtr, isKnownASCII: s.isASCII))
+    self.init(_StringGuts(bufPtr, isASCII: s.isASCII))
   }
   public init(_ s: Swift.String) {
     let codeUnits = Array(s.utf8)
