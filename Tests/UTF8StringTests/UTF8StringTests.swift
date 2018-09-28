@@ -725,6 +725,36 @@ final class UTF8StringTests: XCTestCase {
     }
   }
 
+  func testStringsThatNeedRepairing() {
+    struct ExampleThatNeedsRepairing {
+      let brokenBytes: [UInt8]
+      let expectedRepairedBytes: [UInt8]
+      let desc: Swift.String
+      init(_ brokenBytes: [UInt8], _ expectedRepairedBytes: [UInt8], _ desc: Swift.String) {
+        self.brokenBytes = brokenBytes
+        self.expectedRepairedBytes = expectedRepairedBytes
+        self.desc = desc
+      }
+    }
+
+    let strings: [ExampleThatNeedsRepairing] = [
+        .init([0xc3], [0xEF, 0xBF, 0xBD], "half an ä"),
+        .init(Array("🙈".utf8) + [0xc3] + Array("🏴󠁧󠁢󠁳󠁣󠁴󠁿".utf8), Array("🙈".utf8) + [0xEF, 0xBF, 0xBD] + Array("🏴󠁧󠁢󠁳󠁣󠁴󠁿".utf8), "half an ä sandwiched by emojis"),
+        .init(Array("🤪".utf8.dropLast(1)), [0xEF, 0xBF, 0xBD], "almost emoji"),
+        .init(Array("🤪".utf8.dropFirst(1)) + Array("🤪".utf8.dropLast(1)) + Array("🤪".utf8.dropLast(2)),
+              [0xEF, 0xBF, 0xBD, 0xEF, 0xBF, 0xBD, 0xEF, 0xBF, 0xBD],
+              "three broken emoji back to back")
+    ]
+
+    for s in strings {
+      XCTAssertEqual(s.expectedRepairedBytes,
+                     Array(UTF8String.String(decoding: s.brokenBytes, as: UTF8.self).utf8),
+                     "\("s.desc) failed)")")
+    }
+  }
+
+
+
 }
 
 // The most simple subclass of NSString that CoreFoundation does not know
