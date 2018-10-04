@@ -60,8 +60,6 @@
 		18CD7FCF20FE8F290092F0D9 /* StringCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD7FCE20FE8F290092F0D9 /* StringCreate.swift */; };
 		18CD7FD32101043B0092F0D9 /* ContiguouslyStored.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD7FD22101043B0092F0D9 /* ContiguouslyStored.swift */; };
 		18CD7FD52101516E0092F0D9 /* IntegerParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD7FD42101516E0092F0D9 /* IntegerParsing.swift */; };
-		8F5A16EF215E590F00197AB8 /* UTF8ValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5A16EE215E590F00197AB8 /* UTF8ValidationTests.swift */; };
-		8FDC0C8F215E4EB600DC1711 /* StringUTF8Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDC0C8E215E4EB600DC1711 /* StringUTF8Validation.swift */; };
 		OBJ_46 /* Scratch.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* Scratch.swift */; };
 		OBJ_47 /* StdlibMockUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* StdlibMockUp.swift */; };
 		OBJ_48 /* UTF8String.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* UTF8String.swift */; };
@@ -128,11 +126,9 @@
 		18CD7FCE20FE8F290092F0D9 /* StringCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringCreate.swift; path = "../../../utf8-swift/swift/stdlib/public/core/StringCreate.swift"; sourceTree = "<group>"; };
 		18CD7FD22101043B0092F0D9 /* ContiguouslyStored.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContiguouslyStored.swift; path = "../../../utf8-swift/swift/stdlib/public/core/ContiguouslyStored.swift"; sourceTree = "<group>"; };
 		18CD7FD42101516E0092F0D9 /* IntegerParsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntegerParsing.swift; path = "../../../utf8-swift/swift/stdlib/public/core/IntegerParsing.swift"; sourceTree = "<group>"; };
-		8F5A16EE215E590F00197AB8 /* UTF8ValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTF8ValidationTests.swift; sourceTree = "<group>"; };
-		8FDC0C8E215E4EB600DC1711 /* StringUTF8Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; name = StringUTF8Validation.swift; path = "../../../utf8-swift/swift/stdlib/public/core/StringUTF8Validation.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		OBJ_10 /* StdlibMockUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StdlibMockUp.swift; sourceTree = "<group>"; };
 		OBJ_11 /* UTF8String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF8String.swift; sourceTree = "<group>"; };
-		OBJ_15 /* UTF8StringTests.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = UTF8StringTests.swift; sourceTree = "<group>"; tabWidth = 2; };
+		OBJ_15 /* UTF8StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTF8StringTests.swift; sourceTree = "<group>"; };
 		OBJ_16 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* Scratch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scratch.swift; sourceTree = "<group>"; };
@@ -171,7 +167,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_15 /* UTF8StringTests.swift */,
-				8F5A16EE215E590F00197AB8 /* UTF8ValidationTests.swift */,
 				186B4F2920F4027800E9E9B1 /* StdlibUnittestShims.swift */,
 				OBJ_16 /* XCTestManifests.swift */,
 			);
@@ -240,7 +235,6 @@
 				188CD3D72152CB8D0039DCD4 /* StringGutsRangeReplaceable.swift */,
 				18A8969420EC45EB0097A770 /* StringStorage.swift */,
 				18A8969520EC45EB0097A770 /* StringUnicodeScalarView.swift */,
-				8FDC0C8E215E4EB600DC1711 /* StringUTF8Validation.swift */,
 				18A8968C20EC45EA0097A770 /* StringUTF8View.swift */,
 				188CD3D3211E13BD0039DCD4 /* StringTesting.swift */,
 				18A8969620EC45EB0097A770 /* StringUTF16View.swift */,
@@ -361,7 +355,6 @@
 				18A8969F20EC45EC0097A770 /* StringBridge.swift in Sources */,
 				1846AEE42141E6D0004B8D9B /* UnicodeHelpers.swift in Sources */,
 				18A8968120EC45CD0097A770 /* Character.swift in Sources */,
-				8FDC0C8F215E4EB600DC1711 /* StringUTF8Validation.swift in Sources */,
 				18A8967E20EC45CD0097A770 /* OutputStream.swift in Sources */,
 				OBJ_48 /* UTF8String.swift in Sources */,
 				18A8969D20EC45EC0097A770 /* StringHashable.swift in Sources */,
@@ -397,7 +390,6 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_69 /* UTF8StringTests.swift in Sources */,
-				8F5A16EF215E590F00197AB8 /* UTF8ValidationTests.swift in Sources */,
 				OBJ_70 /* XCTestManifests.swift in Sources */,
 				186B4F2A20F4027800E9E9B1 /* StdlibUnittestShims.swift in Sources */,
 			);
